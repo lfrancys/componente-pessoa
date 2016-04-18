@@ -31,4 +31,5 @@ class PessoaServiceController extends Controller
         return $this->componentePessoaService->getPessoaDatasetJson('_dataTableQuery'.$request->get('name'));
     }
 
+
 }
