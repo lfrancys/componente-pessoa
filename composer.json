@@ -1,0 +1,43 @@
+{
+  "name": "girolando/componente-pessoa",
+  "description": "Componentes Girolando - Pessoa",
+  "keywords": [
+    "laravel",
+    "girolando",
+    "componente",
+    "pessoa"
+  ],
+  "licence": "MIT",
+  "authors": [
+    {
+      "name": "Anderson Nunes",
+      "email": "anderson.nuneseth@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0",
+    "illuminate/support" : "5.1.x",
+    "girolando/base-component" : "1.0.x",
+    "andersonef/api-clientlayer": "^1.2",
+    "illuminate/routing": "5.1.x",
+    "andersonef/repositories-pattern": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Girolando\\Componentes\\Pessoa\\": "src/module/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Girolando\\Tests\\Componentes\\Pessoa\\": "tests/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
+
