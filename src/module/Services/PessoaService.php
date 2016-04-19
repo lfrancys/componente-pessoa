@@ -17,4 +17,5 @@ class PessoaService extends BaseComponentService
     {
         return view('ComponentePessoa::Services.Pessoa._init', $params);
     }
+
 }

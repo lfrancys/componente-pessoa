@@ -1,4 +1,5 @@
 @section('ComponentJavascript')
+    @parent
     <script type="text/javascript">
         //aki é certeza que o namespace Componente existe, portanto:
         Componente.Pessoa = function(name, attributes){
