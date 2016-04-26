@@ -24,37 +24,48 @@
 
             var colunas = [
                 {
+                    name : 'codigoAssociado',
+                    data : function(obj){
+                        if(obj.tipoAssociado == 1) return obj.codigoAssociado;
+                        return '-<!--' + obj.codigoPessoa + '-->';
+                    }
+                },
+                {
                     name : 'nomePessoa',
                     data : function(obj){
                         if(!obj.nomePessoa) return ' - ';
                         return '<label for="_comppessoa_{!! $name !!}_' + obj.codigoPessoa + '">' + obj.nomePessoa + '</label>';
                     }
                 },
-                {name : 'tipoPessoa', data : function(obj){
+                {
+                    name : 'tipoPessoa',
+                    searchable : false,
+                    orderable : false,
+                    data : function(obj){
                     var tipo = '';
 
                     if(obj.tipoAssociado == 1 && obj.statusAssociado == 1) {
-                        tipo += '<span data-toggle="tooltip" data-placement="top" data-original-title="{!! trans('ComponentePessoa::PessoaServiceController.tipos.associadoAtivo') !!}" class="label label-success">{!! trans('ComponentePessoa::PessoaServiceController.tipos.sgAssociadoAtivo') !!}</span>';
+                        tipo += '<span data-toggle="tooltip" data-placement="top" data-original-title="{!! trans('ComponentePessoa::PessoaServiceController.tipos.associadoAtivo') !!}" class="label label-success">{!! trans('ComponentePessoa::PessoaServiceController.tipos.sgAssociadoAtivo') !!}</span> ' ;
                     }
 
                     if(obj.tipoAssociado == 1 && obj.statusAssociado == 0) {
-                        tipo += '<span data-toggle="tooltip" data-placement="top" data-original-title="{!! trans('ComponentePessoa::PessoaServiceController.tipos.associadoInativo') !!}" class="label">{!! trans('ComponentePessoa::PessoaServiceController.tipos.sgAssociadoInativo') !!}</span>';
+                        tipo += '<span data-toggle="tooltip" data-placement="top" data-original-title="{!! trans('ComponentePessoa::PessoaServiceController.tipos.associadoInativo') !!}" class="label label-danger">{!! trans('ComponentePessoa::PessoaServiceController.tipos.sgAssociadoInativo') !!}</span> ';
                     }
 
                     if(obj.isFuncionario == 1){
-                        tipo += '<span data-toggle="tooltip" data-placement="top" data-original-title="{!! trans('ComponentePessoa::PessoaServiceController.tipos.funcionario') !!}" class="label label-primary">{!! trans('ComponentePessoa::PessoaServiceController.tipos.sgFuncionario') !!}</span>';
+                        tipo += '<span data-toggle="tooltip" data-placement="top" data-original-title="{!! trans('ComponentePessoa::PessoaServiceController.tipos.funcionario') !!}" class="label label-primary">{!! trans('ComponentePessoa::PessoaServiceController.tipos.sgFuncionario') !!}</span> ';
                     }
 
                     if(obj.isTecnico == 1){
-                        tipo += '<span data-toggle="tooltip" data-placement="top" data-original-title="{!! trans('ComponentePessoa::PessoaServiceController.tipos.tecnico') !!}" class="label label-warning">{!! trans('ComponentePessoa::PessoaServiceController.tipos.sgTecnico') !!}</span>';
+                        tipo += '<span data-toggle="tooltip" data-placement="top" data-original-title="{!! trans('ComponentePessoa::PessoaServiceController.tipos.tecnico') !!}" class="label label-warning">{!! trans('ComponentePessoa::PessoaServiceController.tipos.sgTecnico') !!}</span> ';
                     }
 
                     if(obj.isControlador == 1){
-                        tipo += '<span data-toggle="tooltip" data-placement="top" data-original-title="{!! trans('ComponentePessoa::PessoaServiceController.tipos.controlador') !!}" class="label label-warning">{!! trans('ComponentePessoa::PessoaServiceController.tipos.sgControlador') !!}</span>';
+                        tipo += '<span data-toggle="tooltip" data-placement="top" data-original-title="{!! trans('ComponentePessoa::PessoaServiceController.tipos.controlador') !!}" class="label label-warning">{!! trans('ComponentePessoa::PessoaServiceController.tipos.sgControlador') !!}</span> ';
                     }
 
                     if(obj.isVeterinario == 1){
-                        tipo += '<span data-toggle="tooltip" data-placement="top" data-original-title="{!! trans('ComponentePessoa::PessoaServiceController.tipos.veterinario') !!}" class="label label-info">{!! trans('ComponentePessoa::PessoaServiceController.tipos.sgVeterinario') !!}</span>';
+                        tipo += '<span data-toggle="tooltip" data-placement="top" data-original-title="{!! trans('ComponentePessoa::PessoaServiceController.tipos.veterinario') !!}" class="label label-info">{!! trans('ComponentePessoa::PessoaServiceController.tipos.sgVeterinario') !!}</span> ';
                     }
                     return tipo;
 

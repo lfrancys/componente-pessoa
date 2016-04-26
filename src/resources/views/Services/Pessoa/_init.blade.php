@@ -17,6 +17,7 @@
              */
             this.onSearchButtonClick = function(){
                 System.beginLoading($("body"), '{!! trans('ComponentePessoa::Services/PessoaService._init.msgBuscando') !!}');
+                self.selectedItems.clear();
                 $.get('/vendor-girolando/componentes/pessoa', this.getAttributes(), function(response){
                     System.stopLoading();
                     self.modalInstance = Alert.bigConfirm(response, function(ok){

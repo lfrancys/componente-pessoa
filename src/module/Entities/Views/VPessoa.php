@@ -14,6 +14,8 @@ class VPessoa extends Model
      */
     protected $table = "sistema.vPessoa";
 
+    protected $hidden = ['loginPessoa', 'senhaPessoa', 'cpfPessoa', 'CGCFO'];
+
 
     /**
      * @var string
