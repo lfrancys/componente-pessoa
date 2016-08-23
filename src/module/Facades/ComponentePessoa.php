@@ -15,7 +15,7 @@ class ComponentePessoa extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'Girolando.Componente.'.ComponentProvider::$namespace;
+        return 'Girolando.Componente.'.ComponentProvider::$componentNamespace;
     }
 
 }

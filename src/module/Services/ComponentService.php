@@ -16,6 +16,6 @@ class ComponentService extends BaseComponentService
 
     public function _init($params = [])
     {
-        return view(ComponentProvider::$namespace.'::Services.Component._init', $params);
+        return view(ComponentProvider::$componentNamespace.'::Services.Component._init', $params);
     }
 }

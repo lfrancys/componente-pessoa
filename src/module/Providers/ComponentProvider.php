@@ -20,7 +20,7 @@ class ComponentProvider extends BaseComponentProvider{
 
     public static $routeModal = '/vendor-girolando/componentes/pessoa';
     public static $routeServer = '/vendor-girolando/server/componentes/pessoa';
-    public static $namespace = 'ComponentePessoa';
+    public static $componentNamespace = 'ComponentePessoa';
     public static $entity = DatabaseEntity::class;
     public static $facade = ComponentePessoa::class;
     public static $databaseService = DatabaseEntityService::class;
@@ -30,8 +30,8 @@ class ComponentProvider extends BaseComponentProvider{
 
     public function boot(Router $router)
     {
-        Lang::addNamespace(self::$namespace, __DIR__.'/../../resources/lang');
-        View::addNamespace(self::$namespace, __DIR__.'/../../resources/views');
+        Lang::addNamespace(self::$componentNamespace, __DIR__.'/../../resources/lang');
+        View::addNamespace(self::$componentNamespace, __DIR__.'/../../resources/views');
         parent::boot($router);
     }
 
@@ -51,9 +51,9 @@ class ComponentProvider extends BaseComponentProvider{
      */
     public function register()
     {
-        $this->app->bind('Girolando.Componente.'.self::$namespace, self::$componentService);
+        $this->app->bind('Girolando.Componente.'.self::$componentNamespace, self::$componentService);
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-        $loader->alias(self::$namespace, self::$facade);
+        $loader->alias(self::$componentNamespace, self::$facade);
         $this->commands([UpCommand::class, DownCommand::class]);
 
         $this->app->when(ServerController::class)->needs(ComponentServiceContract::class)->give(self::$databaseService);
