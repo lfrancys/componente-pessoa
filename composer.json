@@ -18,9 +18,7 @@
     "php": ">=5.6.0",
     "illuminate/support" : "5.1.x",
     "girolando/base-component" : "1.0.x",
-    "andersonef/api-clientlayer": "^1.2",
-    "illuminate/routing": "5.1.x",
-    "andersonef/repositories-pattern": "^1.0"
+    "illuminate/routing": "5.1.x"
   },
   "autoload": {
     "psr-4": {

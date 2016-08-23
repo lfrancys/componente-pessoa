@@ -1,5 +1,4 @@
 @section('ComponentJavascript')
-    @parent
     <script type="text/javascript">
         //aki é certeza que o namespace Componente existe, portanto:
         Componente.Pessoa = function(name, attributes){
@@ -16,7 +15,7 @@
              * Esse é o método principal do componente. Ele é disparado quando a pessoa clicar no Search Button e não for impedida por algum evento.
              */
             this.onSearchButtonClick = function(){
-                System.beginLoading($("body"), '{!! trans('ComponentePessoa::Services/PessoaService._init.msgBuscando') !!}');
+                System.beginLoading($("body"), '{!! trans('ComponentePessoa::Services/Componentes/ComponentService._init.msgBuscando') !!}');
                 self.selectedItems.clear();
                 $.get('/vendor-girolando/componentes/pessoa', this.getAttributes(), function(response){
                     System.stopLoading();
@@ -32,7 +31,7 @@
                             self.triggerEvent(Componente.EVENTS.ON_FINISH, self.selectedItems.values());
                             return;
                         }
-                    }, '{!! trans('ComponentePessoa::Services/PessoaService._init.titModal') !!}');
+                    }, '{!! trans('ComponentePessoa::Services/Componentes/ComponentService._init.titModal') !!}');
 
 
                     if(!self.getAttributes().multiple){
@@ -41,7 +40,7 @@
 
                 }).fail(function(){
                     System.stopLoading();
-                    Alert.error('{!! trans('ComponentePessoa::Services/PessoaService._init.errOpenModal') !!}');
+                    Alert.error('{!! trans('ComponentePessoa::Services/Componentes/ComponentService._init.errOpenModal') !!}');
                 });
             }
 
@@ -52,7 +51,7 @@
                 var self = this;
                 $("componente[type=pessoa]").each(function(){
                     self._initialize($(this), Componente.Pessoa); //método do pai, adicionado pelo newFactory, inicializa o componente
-                });
+                })
             }
         });
 

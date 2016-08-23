@@ -1,14 +1,16 @@
 <?php
 
-namespace Girolando\Componentes\Pessoa\Controllers;
+namespace Girolando\Componentes\Pessoa\Http\Controllers;
 
 use Andersonef\ApiClientLayer\Services\ApiConnector;
+use Girolando\Componentes\Pessoa\Entities\Views\DatabaseEntity;
+use Girolando\Componentes\Pessoa\Providers\ComponentProvider;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
 
-class PessoaServiceController extends Controller
+class ClientController extends Controller
 {
     protected $apiConnector;
 
@@ -25,12 +27,13 @@ class PessoaServiceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
      */
     public function index(Request $request)
     {
         if($request->has('_DataTableQuery')){
-            $response = $this->apiConnector->get('/vendor-girolando/server/componentes/pessoa', $request->all());
+            $response = $this->apiConnector->get(ComponentProvider::$routeServer, $request->all());
+
             if($response->status == 'success'){
                 return new JsonResponse($response->data, 200);
             }
@@ -44,7 +47,8 @@ class PessoaServiceController extends Controller
         }
 
         $request->merge(['_attrFilters' => $filters]);
+        $request->merge(['tableName' => (new DatabaseEntity())->getTable()]);
 
-        return view('ComponentePessoa::PessoaServiceController.index', $request->all());
+        return view(ComponentProvider::$namespace.'::ClientController.index', $request->all());
     }
 }

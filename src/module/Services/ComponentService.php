@@ -9,13 +9,13 @@ namespace Girolando\Componentes\Pessoa\Services;
 
 
 use Girolando\BaseComponent\Services\BaseComponentService;
+use Girolando\Componentes\Pessoa\Providers\ComponentProvider;
 
-class PessoaService extends BaseComponentService
+class ComponentService extends BaseComponentService
 {
 
     public function _init($params = [])
     {
-        return view('ComponentePessoa::Services.Pessoa._init', $params);
+        return view(ComponentProvider::$namespace.'::Services.Component._init', $params);
     }
-
 }
