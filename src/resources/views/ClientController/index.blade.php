@@ -20,7 +20,7 @@
     <script type="text/javascript">
 
         Componente.scope(function(){ //escopando as variáveis para não conflitarem com possíveis outros componentes do mesmo tipo abertos na tela
-            var componente = Componente.AnimalFactory.get('{!! $name !!}');
+            var componente = Componente.PessoaFactory.get('{!! $name !!}');
 
             var colunas = [
                 {
@@ -115,23 +115,23 @@
 
             @if(isset($multiple) && $multiple)
                 componente.modalInstance.delegate('.chkSelecionar', 'change', function(){
-                var val = $(this).val();
-                var obj = componente.dataTableInstance.row($(this).closest('tr'));
-                if(!componente.dataTableInstance.DataTableQuery().isChecked(val)){
-                    componente.selectedItems.put(val, obj.data());
-                    return componente.dataTableInstance.DataTableQuery().addItem(val);
-                }
-                componente.selectedItems.remove(val);
-                return componente.dataTableInstance.DataTableQuery().removeItem(val);
-            });
+                    var val = $(this).val();
+                    var obj = componente.dataTableInstance.row($(this).closest('tr'));
+                    if(!componente.dataTableInstance.DataTableQuery().isChecked(val)){
+                        componente.selectedItems.put(val, obj.data());
+                        return componente.dataTableInstance.DataTableQuery().addItem(val);
+                    }
+                    componente.selectedItems.remove(val);
+                    return componente.dataTableInstance.DataTableQuery().removeItem(val);
+                });
             @else
                 componente.modalInstance.delegate('.btnSelecionar', 'click', function(){
-                var animal = componente.dataTableInstance.row($(this).closest('tr')).data();
-                componente.selectedItems.clear();
-                componente.selectedItems.put($(this).attr('codigo'), animal);
-                componente.modalInstance.modal('hide');
-                componente.triggerEvent(Componente.EVENTS.ON_FINISH, animal);
-            });
+                    var entity = componente.dataTableInstance.row($(this).closest('tr')).data();
+                    componente.selectedItems.clear();
+                    componente.selectedItems.put($(this).attr('codigo'), entity);
+                    componente.modalInstance.modal('hide');
+                    componente.triggerEvent(Componente.EVENTS.ON_FINISH, entity);
+                });
             @endif
         });
     </script>

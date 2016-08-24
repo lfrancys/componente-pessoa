@@ -49,6 +49,6 @@ class ClientController extends Controller
         $request->merge(['_attrFilters' => $filters]);
         $request->merge(['tableName' => (new DatabaseEntity())->getTable()]);
 
-        return view(ComponentProvider::$namespace.'::ClientController.index', $request->all());
+        return view(ComponentProvider::$componentNamespace.'::ClientController.index', $request->all());
     }
 }

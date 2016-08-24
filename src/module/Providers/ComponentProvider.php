@@ -8,7 +8,6 @@ use Girolando\Componentes\Pessoa\Commands\UpCommand;
 use Girolando\Componentes\Pessoa\Entities\Views\DatabaseEntity;
 use Girolando\Componentes\Pessoa\Facades\ComponentePessoa;
 use Girolando\Componentes\Pessoa\Http\Controllers\ServerController;
-use Girolando\Componentes\Pessoa\Services\AnimalService;
 use Girolando\Componentes\Pessoa\Services\ComponentService;
 use Girolando\Componentes\Pessoa\Services\Server\DatabaseEntityService;
 use Illuminate\Routing\Router;
