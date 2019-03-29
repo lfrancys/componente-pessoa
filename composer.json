@@ -17,7 +17,7 @@
   "require": {
     "php": ">=5.6.0",
     "illuminate/support" : "5.7.x",
-    "girolando/base-component" : "1.0.x",
+    "girolando/base-component" : "2.0.x",
     "illuminate/routing": "5.7.x"
   },
   "autoload": {
