@@ -43,6 +43,7 @@ class DatabaseEntity extends Model
         'RUA',
         'CIDADE',
         'CODETD',
+        'crmvVeterinario',
         'isCriadorAtivo',
         'isFuncionario',
         'isTecnico',

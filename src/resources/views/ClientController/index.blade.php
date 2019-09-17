@@ -12,6 +12,9 @@
         @if(!(isset($multiple) && $multiple))
             <th>Selecionar</th>
         @endif
+        <!-- Colunas utilizadas somente para filtrar -->
+        <th>Crmv</th>
+        <!-- Fim de colunas de filtro -->
         </thead>
     </table>
 @endsection
@@ -84,34 +87,39 @@
             });
             @endif
 
+            //Colunas utilizadas para filtrar
+            colunas.push({
+                name: 'crmvVeterinario',
+                data: 'crmvVeterinario',
+                visible: false
+            });
 
-                    componente.dataTableInstance = $(".comp-tbl-search-pessoa")
-                    .on('xhr.dt', function(){
-                        setTimeout(function(){
-                            $("[data-toggle=tooltip]").tooltip();
-                        }, 0);
-                    })
-                    .CustomDataTable({
-                        name : '_dataTableQuery{!! $name !!}',
-                        queryParams : {
-                            idField : '{!! $tableName !!}.id',
-                            filtersCallback : function(obj){
-                                @if($_attrFilters)
-                                        @foreach($_attrFilters as $attr => $val)
-                                        obj['{!! $attr !!}'] = '{!! $val !!}';
-                                @endforeach
-                                @endif
-                            }
-                        },
-                        columns : colunas,
-                        ajax : {
-                            url : '/vendor-girolando/componentes/pessoa',
-                            data : function(obj){
-                                obj.name = '{!! $name !!}';
-                            }
-                        }
-                    });
-
+            componente.dataTableInstance = $(".comp-tbl-search-pessoa")
+            .on('xhr.dt', function(){
+                setTimeout(function(){
+                    $("[data-toggle=tooltip]").tooltip();
+                }, 0);
+            })
+            .CustomDataTable({
+                name : '_dataTableQuery{!! $name !!}',
+                queryParams : {
+                    idField : '{!! $tableName !!}.id',
+                    filtersCallback : function(obj){
+                        @if($_attrFilters)
+                                @foreach($_attrFilters as $attr => $val)
+                                obj['{!! $attr !!}'] = '{!! $val !!}';
+                        @endforeach
+                        @endif
+                    }
+                },
+                columns : colunas,
+                ajax : {
+                    url : '/vendor-girolando/componentes/pessoa',
+                    data : function(obj){
+                        obj.name = '{!! $name !!}';
+                    }
+                }
+            });
 
             @if(isset($multiple) && $multiple)
                 componente.modalInstance.delegate('.chkSelecionar', 'change', function(){
