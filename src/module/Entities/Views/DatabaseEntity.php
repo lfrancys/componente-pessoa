@@ -45,6 +45,7 @@ class DatabaseEntity extends Model
         'CODETD',
         'crmvVeterinario',
         'isCriadorAtivo',
+        'isCriador',
         'isFuncionario',
         'isTecnico',
         'isVeterinario',
