@@ -64,4 +64,5 @@ class DatabaseEntity extends Model
         'isRebanhoColaborador',
         'isCriadorAtivoOrRebColaborador'
     ];
+
 }
